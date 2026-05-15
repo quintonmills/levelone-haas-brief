@@ -3,73 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LevelOne | Technical Architecture</title>
+    <title>LevelOne | Technical Architecture Brief</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #0a0a0a;
+            --card-bg: #161616;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --accent: #ffffff;
+            --border: #333;
+        }
+
         body {
             margin: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #0f0f0f;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            max-width: 800px;
-            padding: 20px;
-        }
-        h1 {
-            font-size: 3rem;
-            letter-spacing: -1px;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #ffffff, #888888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        p {
-            font-size: 1.2rem;
-            color: #a0a0a0;
-            margin-bottom: 40px;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
         }
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: #ffffff;
-            color: #000000;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: transform 0.2s, background-color 0.2s;
+
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+            padding: 0 20px;
         }
-        .btn:hover {
-            transform: translateY(-3px);
-            background-color: #e0e0e0;
-        }
-        .footer {
-            margin-top: 50px;
-            font-size: 0.8rem;
-            color: #444;
+
+        .tagline {
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: -2px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section {
+            margin-bottom: 100px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-left: 3px solid var(--accent);
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent);
+        }
+
+        .tech-pill {
+            display: inline-block;
+            padding: 4px 12px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 5px;
+            color: var(--text-dim);
+        }
+
+        .diagram-box {
+            width: 100%;
+            height: 300px;
+            background: #111;
+            border: 1px solid var(--border);
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dim);
+            font-style: italic;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>LevelOne</h1>
-        <p>A Hardware-as-a-Service (HaaS) ecosystem for real-time industrial liquid tracking and predictive infrastructure analytics.</p>
-        
-        <a href="LevelOne_Technical_Architecture_Case_Study.pdf" class="btn" target="_blank">
-            View Technical Brief (PDF)
-        </a>
 
-        <div class="footer">
-            Architecture • IoT • Strategy
+    <header>
+        <div class="tagline">Solutions Architecture Case Study</div>
+        <h1>LevelOne</h1>
+        <p style="color: var(--text-dim); max-width: 600px;">A Hardware-as-a-Service (HaaS) ecosystem for industrial liquid tracking and predictive infrastructure analytics.</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="section">
+            <h2>The Problem Space</h2>
+            <p>Traditional liquid asset management relies on manual inspections, leading to high operational costs and "blind spots" in critical infrastructure. LevelOne solves this by bridging physical sensor data with a real-time digital intelligence layer.</p>
         </div>
+
+        <div class="section">
+            <h2>System Architecture</h2>
+            <p>Built on a distributed <strong>Edge-to-Cloud</strong> model. The architecture prioritizes data integrity and power efficiency for remote deployments.</p>
+            
+            <div class="diagram-box">
+                [High-Level Data Flow: Sensors -> Gateway -> Cloud -> Dashboard]
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>The Stack</h3>
+                    <div class="tech-pill">Node.js</div>
+                    <div class="tech-pill">TypeScript</div>
+                    <div class="tech-pill">PostgreSQL</div>
+                    <div class="tech-pill">React</div>
+                    <div class="tech-pill">IoT Firmware</div>
+                </div>
+                <div class="card">
+                    <h3>Key Metrics</h3>
+                    <p>• 40% Increase in device longevity via duty-cycle optimization.<br>
+                       • Real-time ingestion of time-series sensor data.<br>
+                       • Secure RESTful API orchestration.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Architectural Trade-offs</h2>
+            <div class="grid">
+                <div>
+                    <h3>PostgreSQL vs. NoSQL</h3>
+                    <p>Chose relational integrity to manage the complex hierarchy between municipal nodes and physical sensor assets, ensuring auditability for public infrastructure.</p>
+                </div>
+                <div>
+                    <h3>REST vs. WebSockets</h3>
+                    <p>Selected RESTful ingestion to minimize battery drain on edge devices, utilizing a sleep-wake protocol that prioritizes hardware lifespan over millisecond-level streaming.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Business Impact</h2>
+            <p>LevelOne transforms a "reactive" maintenance model into a "proactive" strategic asset. This architectural approach allows municipal leaders to anticipate depletion events and optimize logistics, mirroring the scale of enterprise systems like FuelNet.</p>
+        </div>
+
     </div>
+
+    <footer>
+        &copy; 2026 Quinton Mills • Private Startup Portfolio
+    </footer>
+
 </body>
 </html>
