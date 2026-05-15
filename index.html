@@ -6,190 +6,212 @@
     <title>LevelOne | Technical Architecture Brief</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0a0a0a;
-            --card-bg: #161616;
-            --text-main: #ffffff;
-            --text-dim: #a0a0a0;
-            --accent: #ffffff;
-            --border: #333;
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --accent: #000000;
+            --muted: #666666;
+            --border: #eeeeee;
+            --code-bg: #f5f5f5;
         }
 
         body {
             margin: 0;
             padding: 0;
-            background-color: var(--bg);
-            color: var(--text-main);
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            line-height: 1.7;
+        }
+
+        .wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 100px 40px;
         }
 
         header {
-            height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-bottom: 1px solid var(--border);
-            text-align: center;
-            padding: 0 20px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 40px;
+            margin-bottom: 60px;
         }
 
-        .tagline {
+        .brand {
+            font-weight: 800;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            font-size: 0.8rem;
-            color: var(--text-dim);
             margin-bottom: 10px;
+            display: block;
         }
 
         h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
+            line-height: 1.1;
             margin: 0;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: -2px;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 80px 20px;
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--muted);
+            margin-top: 20px;
+            max-width: 600px;
         }
 
-        .section {
-            margin-bottom: 100px;
+        section {
+            margin-bottom: 80px;
         }
 
         h2 {
-            font-size: 1.8rem;
-            border-left: 3px solid var(--accent);
-            padding-left: 20px;
-            margin-bottom: 30px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--muted);
+            margin-bottom: 25px;
+            border-top: 1px solid var(--border);
+            padding-top: 10px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
         }
 
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 40px;
+            margin-top: 30px;
         }
 
-        .card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
+        .feature-box {
+            padding: 20px;
+            background: #fafafa;
             border: 1px solid var(--border);
         }
 
-        .card h3 {
-            margin-top: 0;
-            color: var(--accent);
+        .stack-list {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            list-style: none;
+            padding: 0;
         }
 
-        .tech-pill {
-            display: inline-block;
-            padding: 4px 12px;
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin: 5px;
-            color: var(--text-dim);
+        .stack-list li {
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
         }
 
-        .diagram-box {
+        .stack-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--muted);
+        }
+
+        .diagram-area {
             width: 100%;
-            height: 300px;
-            background: #111;
+            aspect-ratio: 16 / 9;
+            background: var(--code-bg);
             border: 1px solid var(--border);
             margin: 40px 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-dim);
             font-style: italic;
-            border-radius: 8px;
+            color: var(--muted);
+        }
+
+        .decision-block {
+            border-left: 3px solid var(--accent);
+            padding-left: 30px;
+            margin-bottom: 40px;
         }
 
         footer {
+            margin-top: 100px;
+            font-size: 0.8rem;
+            color: var(--muted);
             text-align: center;
-            padding: 40px;
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border);
         }
 
         @media (max-width: 768px) {
             .grid { grid-template-columns: 1fr; }
             h1 { font-size: 2.5rem; }
+            .wrapper { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="tagline">Solutions Architecture Case Study</div>
-        <h1>LevelOne</h1>
-        <p style="color: var(--text-dim); max-width: 600px;">A Hardware-as-a-Service (HaaS) ecosystem for industrial liquid tracking and predictive infrastructure analytics.</p>
-    </header>
+    <div class="wrapper">
+        <header>
+            <span class="brand">Confidential Technical Brief</span>
+            <h1>LevelOne</h1>
+            <p class="subtitle">Architecting a Hardware-as-a-Service (HaaS) ecosystem for industrial-grade liquid logistics and predictive maintenance.</p>
+        </header>
 
-    <div class="container">
-        
-        <div class="section">
-            <h2>The Problem Space</h2>
-            <p>Traditional liquid asset management relies on manual inspections, leading to high operational costs and "blind spots" in critical infrastructure. LevelOne solves this by bridging physical sensor data with a real-time digital intelligence layer.</p>
-        </div>
+        <section>
+            <h2>01. Executive Overview</h2>
+            <p>LevelOne was conceived to eliminate the "analog gap" in municipal and industrial liquid management. By deploying autonomous IoT nodes that communicate directly with a centralized cloud backend, the system transforms reactive infrastructure into an intelligent, proactive network.</p>
+        </section>
 
-        <div class="section">
-            <h2>System Architecture</h2>
-            <p>Built on a distributed <strong>Edge-to-Cloud</strong> model. The architecture prioritizes data integrity and power efficiency for remote deployments.</p>
+        <section>
+            <h2>02. Technical Architecture</h2>
+            <p>The system utilizes an <strong>Edge-to-Cloud data pipeline</strong>. Data is captured via custom-integrated sensors, processed at the edge for noise reduction, and transmitted via a secure RESTful gateway to a relational persistence layer.</p>
             
-            <div class="diagram-box">
-                [High-Level Data Flow: Sensors -> Gateway -> Cloud -> Dashboard]
+            <div class="diagram-area">
+                [High-Level Architecture: IoT Hardware > Node.js API > PostgreSQL > React Dashboard]
             </div>
 
             <div class="grid">
-                <div class="card">
-                    <h3>The Stack</h3>
-                    <div class="tech-pill">Node.js</div>
-                    <div class="tech-pill">TypeScript</div>
-                    <div class="tech-pill">PostgreSQL</div>
-                    <div class="tech-pill">React</div>
-                    <div class="tech-pill">IoT Firmware</div>
+                <div class="feature-box">
+                    <h3>The Core Stack</h3>
+                    <ul class="stack-list">
+                        <li>Node.js & Express</li>
+                        <li>TypeScript</li>
+                        <li>PostgreSQL</li>
+                        <li>React / Tailwind</li>
+                        <li>C++ (Hardware Firmware)</li>
+                    </ul>
                 </div>
-                <div class="card">
-                    <h3>Key Metrics</h3>
-                    <p>• 40% Increase in device longevity via duty-cycle optimization.<br>
-                       • Real-time ingestion of time-series sensor data.<br>
-                       • Secure RESTful API orchestration.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Architectural Trade-offs</h2>
-            <div class="grid">
-                <div>
-                    <h3>PostgreSQL vs. NoSQL</h3>
-                    <p>Chose relational integrity to manage the complex hierarchy between municipal nodes and physical sensor assets, ensuring auditability for public infrastructure.</p>
-                </div>
-                <div>
-                    <h3>REST vs. WebSockets</h3>
-                    <p>Selected RESTful ingestion to minimize battery drain on edge devices, utilizing a sleep-wake protocol that prioritizes hardware lifespan over millisecond-level streaming.</p>
+                <div class="feature-box">
+                    <h3>Key Capabilities</h3>
+                    <p>• Duty-cycle optimization for battery longevity.<br>
+                       • Time-series data visualization.<br>
+                       • Multi-tenant municipal account hierarchy.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="section">
-            <h2>Business Impact</h2>
-            <p>LevelOne transforms a "reactive" maintenance model into a "proactive" strategic asset. This architectural approach allows municipal leaders to anticipate depletion events and optimize logistics, mirroring the scale of enterprise systems like FuelNet.</p>
-        </div>
+        <section>
+            <h2>03. Strategic Trade-offs</h2>
+            
+            <div class="decision-block">
+                <h3>Relational Data Integrity</h3>
+                <p>Selected <strong>PostgreSQL</strong> to manage the complex, high-stakes relationships between municipal nodes and physical sensor assets. This ensures a transparent audit trail necessary for government and commercial compliance.</p>
+            </div>
 
+            <div class="decision-block">
+                <h3>Low-Energy Ingestion</h3>
+                <p>Prioritized RESTful polling over persistent WebSockets. This strategic choice reduced power consumption on edge hardware by 40%, significantly extending the hardware maintenance cycle.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>04. Market Context</h2>
+            <p>By leveraging many of the same architectural principles found in enterprise-scale logistics platforms like FuelNet, LevelOne provides a sophisticated solution for mid-market municipal authorities, proving that industrial efficiency is a matter of superior system design.</p>
+        </section>
+
+        <footer>
+            &copy; 2026 Quinton Mills • Founding Engineer • LevelOne Startup Venture
+        </footer>
     </div>
-
-    <footer>
-        &copy; 2026 Quinton Mills • Private Startup Portfolio
-    </footer>
 
 </body>
 </html>
